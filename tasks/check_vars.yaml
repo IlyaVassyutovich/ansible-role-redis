@@ -2,3 +2,7 @@
   assert:
     that:
       - redis.bind_address is defined
+
+- name: Prepare configuration values
+  ansible.builtin.set_fact:
+    redis: "{{ defaults.redis | combine(redis) }}"
