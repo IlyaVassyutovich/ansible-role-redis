@@ -1,0 +1,34 @@
+### This file is provisioned by ansible-control.ivh ###
+### All changes directly to this file will be reverted ###
+
+bind {{ ivhome_fixed_ip }}
+port {{ redis.bind_port }}
+tcp-backlog {{ redis.tcp_backlog }}
+timeout {{ redis.timeout }}
+tcp-keepalive {{ redis.tcp_keepalive }}
+
+supervised auto
+pidfile /run/redis.pid
+
+loglevel {{ redis.loglevel }}
+logfile ""
+
+databases {{ redis.databases }}
+save ""
+maxclients {{ redis.max_clients }}
+maxmemory {{ redis.max_memory }}
+appendonly no
+
+lazyfree-lazy-eviction no
+lazyfree-lazy-expire no
+lazyfree-lazy-server-del no
+replica-lazy-flush no
+lazyfree-lazy-user-del no
+lazyfree-lazy-user-flush no
+
+protected-mode yes
+user default on -@all #be919e14c43d1516f1461035394d12f502d7a30a6ed22f564c4571d7a3f44ba0
+user admin on +@all allkeys #ad961607f59b27dacf5d559beec63c08f41122b84765a943eb2a7f00817aae77
+user exporter on +client +ping +info +config|get +cluster|info +slowlog +latency +memory +select +get +scan +xinfo +type +pfcount +strlen +llen +scard +zcard +hlen +xlen +eval allkeys #6e58d56b76a438e9cfac9b19df64ac0002df0fe0f6035e9de0de2602aaa53963
+user nextcloud on +@all -@dangerous -@admin allkeys #91d9bc5df3b9591dc8a48c520e5acfe4e7c404f5229d8c1b10f97987b733a358
+user authelia on +@all -@dangerous -@admin allkeys #b897e1232e02213acb881011ea876ab266bcc37dbfd6dd27281ebf6bbac11707

@@ -1,0 +1,9 @@
+- name: Put redis configuration file
+  template:
+    src: redis.conf.j2
+    dest: /etc/redis/redis.conf
+    mode: 0440
+    owner: redis
+    group: redis
+  notify:
+    - Restart redis
