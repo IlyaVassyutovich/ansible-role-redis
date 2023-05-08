@@ -1,0 +1,18 @@
+galaxy_info:
+  role_name: iv.redis
+  author: Ilya Vassyutovich
+  description: Role to setup Redis server
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 22.04
+
+  galaxy_tags:
+    - redis
+    - database
+
+dependencies: []
