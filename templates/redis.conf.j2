@@ -1,0 +1,39 @@
+### This file is provisioned by ansible-control.ivh ###
+### All changes directly to this file will be reverted ###
+
+bind {{ redis.bind_address }}
+port {{ redis.bind_port }}
+tcp-backlog {{ redis.tcp_backlog }}
+timeout {{ redis.timeout }}
+tcp-keepalive {{ redis.tcp_keepalive }}
+
+supervised auto
+pidfile /run/redis.pid
+
+loglevel {{ redis.loglevel }}
+logfile ""
+
+databases {{ redis.databases }}
+save ""
+maxclients {{ redis.max_clients }}
+maxmemory {{ redis.max_memory }}
+appendonly no
+
+lazyfree-lazy-eviction no
+lazyfree-lazy-expire no
+lazyfree-lazy-server-del no
+replica-lazy-flush no
+lazyfree-lazy-user-del no
+lazyfree-lazy-user-flush no
+
+protected-mode yes
+
+# ACL 
+{# I've lost the game of whitespaces D: #}
+{% for user in redis.users %}
+{% if user.enabled %}
+user {{ user.name }} on {{ user.rules }} {{ user.password_hash }}
+{% else -%}
+user {{ user.name }} off
+{% endif %}
+{% endfor %}
