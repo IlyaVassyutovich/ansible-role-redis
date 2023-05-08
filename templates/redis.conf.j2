@@ -1,7 +1,7 @@
 ### This file is provisioned by ansible-control.ivh ###
 ### All changes directly to this file will be reverted ###
 
-bind {{ ivhome_fixed_ip }}
+bind {{ redis.bind_address }}
 port {{ redis.bind_port }}
 tcp-backlog {{ redis.tcp_backlog }}
 timeout {{ redis.timeout }}
