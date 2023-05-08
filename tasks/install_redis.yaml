@@ -19,9 +19,3 @@
   ansible.builtin.dpkg_selections:
     name: redis
     selection: hold
-
-- name: Enable redis server
-  ansible.builtin.service:
-    name: redis-server.service
-    enabled: true
-    state: started

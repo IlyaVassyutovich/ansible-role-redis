@@ -8,3 +8,7 @@
 - name: Configure redis
   become: true
   include: configure_redis.yaml
+
+- name: Enable and start redis
+  become: true
+  include: enable_start_redis.yaml
