@@ -5,10 +5,3 @@
 - name: Configure redis
   become: true
   include: configure_redis.yaml
-
-- name: Enable and start redis
-  become: true
-  ansible.builtin.systemd:
-    name: redis-server
-    enabled: true
-    state: started
