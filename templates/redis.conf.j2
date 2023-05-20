@@ -14,10 +14,19 @@ loglevel {{ redis.loglevel }}
 logfile ""
 
 databases {{ redis.databases }}
-save ""
 maxclients {{ redis.max_clients }}
 maxmemory {{ redis.max_memory }}
-appendonly no
+
+save "3600 1 300 100 60 10000"
+rdbcompression yes
+rdbchecksum yes
+dbfilename "dump.rdb"
+dir "/var/lib/redis/"
+
+appendonly yes
+appendfilename "appendonly.aof"
+appenddirname "appendonlydir"
+appendfsync everysec
 
 lazyfree-lazy-eviction no
 lazyfree-lazy-expire no
