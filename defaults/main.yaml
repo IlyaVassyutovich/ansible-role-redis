@@ -1,6 +1,6 @@
 defaults:
   redis:
-    version: "6:7.0.10-1rl1~jammy1"
+    version: "6:7.2.4-1rl1~jammy1"
     bind_port: 6379
     tcp_backlog: 511
     timeout: 7200
