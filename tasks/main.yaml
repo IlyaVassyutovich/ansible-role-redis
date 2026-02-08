@@ -1,14 +1,14 @@
 - name: Check mandatory variables
-  include: check_vars.yaml
+  ansible.builtin.include_tasks: check_vars.yaml
 
 - name: Setup/install redis
   become: true
-  include: install_redis.yaml
+  ansible.builtin.include_tasks: install_redis.yaml
 
 - name: Configure redis
   become: true
-  include: configure_redis.yaml
+  ansible.builtin.include_tasks: configure_redis.yaml
 
 - name: Enable and start redis
   become: true
-  include: enable_start_redis.yaml
+  ansible.builtin.include_tasks: enable_start_redis.yaml
