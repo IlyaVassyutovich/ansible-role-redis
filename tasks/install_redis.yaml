@@ -13,7 +13,10 @@
 - name: Setup redis' package (install)
   become: true
   ansible.builtin.apt:
-    name: "redis={{ redis.version }}"
+    name:
+      - "redis={{ redis.version }}"
+      - "redis-server={{ redis.version }}"
+      - "redis-tools={{ redis.version }}"
     state: present
   notify:
     - Restart redis
@@ -21,5 +24,9 @@
 - name: Hold redis' package
   become: true
   ansible.builtin.dpkg_selections:
-    name: redis
+    name: "{{ item }}"
     selection: hold
+  loop:
+    - "redis"
+    - "redis-server"
+    - "redis-tools"
