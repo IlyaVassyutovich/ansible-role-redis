@@ -1,4 +1,5 @@
 - name: Put redis configuration file
+  become: true
   template:
     src: redis.conf.j2
     dest: /etc/redis/redis.conf

@@ -1,4 +1,5 @@
 - name: Enable redis server
+  become: true
   ansible.builtin.service:
     name: redis-server.service
     enabled: true

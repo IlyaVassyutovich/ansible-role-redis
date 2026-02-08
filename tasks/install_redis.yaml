@@ -1,14 +1,17 @@
 - name: Setup redis' apt key
+  become: true
   ansible.builtin.apt_key:
     url: "https://packages.redis.io/gpg"
     state: present
 
 - name: Setup redis' apt repository
+  become: true
   ansible.builtin.apt_repository:
     repo: "deb https://packages.redis.io/deb {{ ansible_distribution_release }} main"
     state: present
 
 - name: Setup redis' package (install)
+  become: true
   ansible.builtin.apt:
     name: "redis={{ redis.version }}"
     state: present
@@ -16,6 +19,7 @@
     - Restart redis
 
 - name: Hold redis' package
+  become: true
   ansible.builtin.dpkg_selections:
     name: redis
     selection: hold
